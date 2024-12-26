@@ -9,8 +9,12 @@ import {
 import TextAnimation from "../animations/TextAnimation";
 import GreyButton from "../components/GreyButton";
 import { useState } from "react";
+import { validateEmail } from "../utils";
+
+
 const SubscribeScreen = () => {
   const [email, setEmail] = useState("");
+  const [disabled, setDisabled] = useState(true);
   // Add subscribe screen code here
   return (
     <KeyboardAvoidingView style={styles.container}>
@@ -26,11 +30,17 @@ const SubscribeScreen = () => {
         style={styles.textInput}
         inputMode={"email"}
         onChangeText={(text) => {
+          if(validateEmail(text)){
+            setDisabled(false);
+          }else{
+            setDisabled(true);
+          }
           console.log(email);
           setEmail(text);
         }}
       />
       <GreyButton
+        disabled={disabled}
         text={"Subscribe"}
         onPress={() => {
           if (email === "") {

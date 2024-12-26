@@ -2,7 +2,7 @@ import * as React from 'react';
 import { View , StyleSheet ,Image, Text , TouchableOpacity, Button} from 'react-native';
 import TextAnimation from '../animations/TextAnimation';
 import GreyButton from '../components/GreyButton';
-
+import { useState } from 'react';
 const WelcomeScreen = ({ navigation }) => {
   // Add welcome screen code here.
   return <View style={styles.container}>
@@ -10,7 +10,7 @@ const WelcomeScreen = ({ navigation }) => {
     <View>
       <TextAnimation phrase={"Little Lemon , your local Mediterranean Bistro"} customTextStyle={styles.textStyle}/>
     </View>
-    <GreyButton text={"Newsletter"} onPress={() => navigation.navigate('Subscribe')}/>
+    <GreyButton disabled={false} text={"Newsletter"} onPress={() => navigation.navigate('Subscribe')}/>
   </View>;
 };
 
